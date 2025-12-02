@@ -4,8 +4,10 @@
   "description": "Herramienta web para conectarse a servidores STOMP y gestionar suscripciones en tiempo real",
   "main": "index.html",
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx serve . -l 3000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
   },
   "keywords": [
     "stomp",
@@ -20,7 +22,8 @@
     "@stomp/stompjs": "^7.0.0"
   },
   "devDependencies": {
-    "serve": "^14.2.1"
+    "vite": "^5.0.0",
+    "terser": "^5.39.0"
   }
 }
 
