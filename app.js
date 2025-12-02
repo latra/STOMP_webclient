@@ -1,3 +1,6 @@
+// Import STOMP library
+import { Client } from '@stomp/stompjs';
+
 // STOMP Web Client Application
 class StompWebClient {
     constructor() {
@@ -698,7 +701,7 @@ class StompWebClient {
         this.connectBtn.disabled = true;
 
         // Create STOMP client
-        this.client = new StompJs.Client({
+        this.client = new Client({
             brokerURL: serverUrl,
             connectHeaders: connectHeaders,
             debug: (str) => {
