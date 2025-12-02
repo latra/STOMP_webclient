@@ -1,0 +1,26 @@
+{
+  "name": "stomp-web-tool",
+  "version": "1.0.0",
+  "description": "Herramienta web para conectarse a servidores STOMP y gestionar suscripciones en tiempo real",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "stomp",
+    "websocket",
+    "realtime",
+    "client",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@stomp/stompjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOMP Debugger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar for configurations -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Configurations</h3>
+        </div>
+        
+        <div class="sidebar-actions">
+            <button id="newConfigBtn" class="btn-sidebar btn-new" title="Nueva Configuración">
+                New
+            </button>
+            <button id="duplicateConfigBtn" class="btn-sidebar btn-duplicate" title="Duplicar Configuración">
+                Duplicate
+            </button>
+            <button id="deleteConfigBtn" class="btn-sidebar btn-delete" title="Borrar Configuración">
+                Delete
+            </button>
+        </div>
+
+        <div class="sidebar-list" id="configList">
+            <!-- Configuration items will be added here dynamically -->
+        </div>
+        
+        <div class="sidebar-footer">
+            <button id="clearCacheBtn" class="btn-sidebar btn-clear-cache" type="button">Clear Cache</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="container">
+        <header>
+            <h1>STOMP Debugger</h1>
+            <p class="subtitle">Connect to a STOMP server and subscribe to a topic in real time</p>
+        </header>
+
+        <!-- Connection Section -->
+        <section class="card">
+            <h2>Connect to the Server</h2>
+            <div class="connection-status">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">Disconnected</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="serverUrl">STOMP Server URL</label>
+                <input 
+                    type="text" 
+                    id="serverUrl" 
+                    placeholder="ws://localhost:4200/realtime" 
+                    value="ws://localhost:4200/realtime"
+                >
+            </div>
+
+            <div class="dynamic-fields-header">
+                <h3>Authentication Headers</h3>
+                <div class="header-buttons">
+                    <button id="addAuthFieldBtn" class="btn btn-add" type="button">+ Add Auth Field</button>
+                </div>
+            </div>
+
+            <div id="authFieldsContainer" class="dynamic-fields-container">
+                <!-- Dynamic auth fields will be added here -->
+            </div>
+
+            <div class="button-group">
+                <button id="connectBtn" class="btn btn-primary">Connect</button>
+                <button id="disconnectBtn" class="btn btn-secondary" disabled>Disconnect</button>
+            </div>
+        </section>
+
+        <!-- Subscription Section -->
+        <section class="card">
+            <h2>Configure Subscription</h2>
+            
+            <div class="form-group">
+                <label for="destination">Subscription Destination</label>
+                <input 
+                    type="text" 
+                    id="destination" 
+                    placeholder="/topic/documents/<SUB_ID> (e.g. /topic/documents/123)" 
+                    value="/topic/documents/<SUB_ID> (e.g. /topic/documents/123)"
+                >
+            </div>
+
+            <div class="dynamic-fields-header">
+                <h3>Subscription Fields</h3>
+                <div class="header-buttons">
+                    <button id="addFieldBtn" class="btn btn-add" type="button">+ Add Field</button>
+                </div>
+            </div>
+
+            <div id="dynamicFieldsContainer" class="dynamic-fields-container">
+                <!-- Dynamic fields will be added here -->
+            </div>
+
+            <div class="button-group">
+                <button id="subscribeBtn" class="btn btn-primary" disabled>Subscribe</button>
+                <button id="unsubscribeBtn" class="btn btn-secondary" disabled>Unsubscribe</button>
+                <button id="clearMessagesBtn" class="btn btn-tertiary">Clear Messages</button>
+            </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section class="card">
+            <h2>Received Messages</h2>
+            <div class="message-stats">
+                <span>Total messages: <strong id="messageCount">0</strong></span>
+                <span>Last update: <strong id="lastUpdate">-</strong></span>
+            </div>
+            <div id="messagesContainer" class="messages-container">
+                <p class="empty-state">No messages yet. Connect and subscribe to receive messages.</p>
+            </div>
+        </section>
+
+        <!-- Logs Section -->
+        <section class="card">
+            <h2>Event Log</h2>
+            <div id="logsContainer" class="logs-container"></div>
+        </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
