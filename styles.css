@@ -745,3 +745,49 @@ select:focus {
     }
 }
 
+/* Footer Styles */
+.app-footer {
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-content a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.footer-divider {
+    color: var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .app-footer {
+        padding: 15px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .footer-content {
+        flex-direction: row;
+        gap: 8px;
+    }
+}
+
